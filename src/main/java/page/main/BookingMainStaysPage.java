@@ -10,22 +10,23 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
-     *
+     * Opens/Closes calendar widget
      */
     public void openCloseCalendar(){
         clickByXPath("//div[@class='xp__dates-inner']");
     }
 
     /**
-     *
+     * Opens/Closes guests/rooms widget
      */
     public void openCloseGuests(){
         clickByXPath("//div[@class='xp__input-group xp__guests']");
     }
 
     /**
+     * Clicks 'Search' button
      *
-     * @return
+     * @return BookingSearchResultsPage -> page object
      */
     public BookingSearchResultsPage search(){
         clickByXPath("//button[@class='sb-searchbox__button ']");
@@ -33,8 +34,9 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
+     * Sets desired amount of adults
      *
-     * @param amount
+     * @param amount int -> amount of adults
      */
     public void setAdults(int amount){
         int currentAdults = Integer.parseInt(getElementText(BookingMainStaysPage.XPATH,
@@ -54,8 +56,9 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
+     * Sets check-in date
      *
-     * @param date
+     * @param date String -> format date yyyy/mm/dd
      */
     public void setCheckIn(String date){
         String dateXpath = "//td[@data-date='" + date + "']";
@@ -66,8 +69,9 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
+     * Sets check-out date
      *
-     * @param date
+     * @param date String -> format date yyyy/mm/dd
      */
     public void setCheckOut(String date){
         String dateXpath = "//td[@data-date='" + date + "']";
@@ -78,8 +82,9 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
+     * Sets desired Location
      *
-     * @param location
+     * @param location String -> Location
      */
     public void setLocation(String location){
         setText(BookingMainStaysPage.XPATH,
@@ -88,8 +93,9 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
+     * Sets desired room amount
      *
-     * @param amount
+     * @param amount int -> room amount
      */
     public void setRooms(int amount){
         int currentRooms = Integer.parseInt(getElementText(BookingMainStaysPage.XPATH,
@@ -109,7 +115,7 @@ public class BookingMainStaysPage extends BookingMainPage{
     }
 
     /**
-     *
+     * Switches month forward in calendar widget
      */
     private void switchMonthNext(){
         clickByXPath("//div[@data-bui-ref='calendar-next']");

@@ -25,44 +25,48 @@ public class ParameterReader {
     private final Logger logger = Logger.getLogger(ParameterReader.class.getName());
 
     public ParameterReader() {
-        setupParser();
+        setupXMLParser();
         readParameters();
     }
 
     /**
+     * Getter for 'fullscreen' value
      *
-     * @return
+     * @return boolean -> 'fullscreen' value
      */
     public boolean getFullscreen(){
         return mIsFullscreen;
     }
 
     /**
+     * Getter for 'window_height' value
      *
-     * @return
+     * @return int -> 'window_height' value
      */
     public int getHeight(){
         return mHeight;
     }
 
     /**
+     * Getter for 'profile' value
      *
-     * @return
+     * @return String -> 'profile' value
      */
     public String getProfile(){
         return mProfile;
     }
 
     /**
+     * Getter for 'window_width' value
      *
-     * @return
+     * @return int -> 'window_width' value
      */
     public int getWidth(){
         return mWidth;
     }
 
     /**
-     *
+     * Reads parameters from 'parameters.xml'
      */
     private void readParameters() {
         mProfile = parseProfile();
@@ -72,8 +76,9 @@ public class ParameterReader {
     }
 
     /**
+     * Parses 'fullscreen' value from 'parameters.xml'
      *
-     * @return
+     * @return boolean -> 'fullscreen' value
      */
     private boolean parseFullscreen(){
         try {
@@ -87,8 +92,9 @@ public class ParameterReader {
     }
 
     /**
+     * Parses 'window_height' value from 'parameters.xml'
      *
-     * @return
+     * @return int -> 'window_height' value
      */
     private int parseHeight(){
         try {
@@ -102,8 +108,9 @@ public class ParameterReader {
     }
 
     /**
+     * Parses 'profile' value from 'parameters.xml'
      *
-     * @return
+     * @return String -> 'profile' value
      */
     private String parseProfile(){
         try {
@@ -117,8 +124,9 @@ public class ParameterReader {
     }
 
     /**
+     * Parses 'window_width' value from 'parameters.xml'
      *
-     * @return
+     * @return int -> 'window_width' value
      */
     private int parseWidth(){
         try {
@@ -132,9 +140,9 @@ public class ParameterReader {
     }
 
     /**
-     *
+     * Sets up xml parser
      */
-    private void setupParser(){
+    private void setupXMLParser(){
         try {
             File param = new File("src/test/resources/config/parameters/parameters.xml");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

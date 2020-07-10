@@ -28,10 +28,14 @@ public class BasePage {
     }
 
     /**
+     * Finds and returns list of web elements
      *
-     * @param by
-     * @param identifier
-     * @return
+     * @param by int -> identifier:
+     *           1 - xPath,
+     *           2 - Id,
+     *           3 - Class name
+     * @param identifier String -> Element unique identifier
+     * @return List -> list of web elements
      */
     public List<WebElement> findElements(int by, String identifier){
         switch (by){
@@ -59,6 +63,7 @@ public class BasePage {
     }
 
     /**
+     * Retrieves and returns text of web element
      *
      * @param by int -> identifier:
      *           1 - xPath,

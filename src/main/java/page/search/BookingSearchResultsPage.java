@@ -14,15 +14,16 @@ public class BookingSearchResultsPage extends BasePage {
     }
 
     /**
+     * Selects desired star rating
      *
-     * @param stars
+     * @param stars int -> rating, e.g. 5
      */
     public void selectStarRating(int stars){
         clickByXPath("//a[@data-id='class-" + stars + "']");
     }
 
     /**
-     *
+     * Triggers 'Sauna' filter
      */
     public void selectSauna(){
         List<WebElement> popActivities = findElements(BasePage.XPATH,
