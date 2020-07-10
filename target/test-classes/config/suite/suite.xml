@@ -4,12 +4,12 @@
    <!--<parameter name="propertiesFile" value="src/test/resources/config/parameters/parameters.xml"/>-->
    <test name="stars">
       <classes>
-         <class name="filters.BookingFilters"/>
+         <class name="test.filters.BookingFilters"/>
       </classes>
    </test>
    <!--<test name="spa">
       <classes>
-         <class name="filters.BookingFilters" />
+         <class name="test.filters.BookingFilters" />
       </classes>
    </test>-->
 </suite>  

@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<!-- This file would be used to store more parameters -->
+<parameters>
+   <browser>
+      <profile>Firefox</profile> <!-- Accepts 'Firefox' | 'Chrome' -->
+   </browser>
+</parameters>
+

@@ -5,7 +5,6 @@ import page.BasePage;
 
 public class BookingMainPage extends BasePage {
 
-
     public BookingMainPage(WebDriver driver) {
         super(driver);
     }
@@ -15,5 +14,12 @@ public class BookingMainPage extends BasePage {
      */
     public void declineCookieWarning(){
         clickByXPath("//a[@class='bui-link bui-link--primary close_warning']");
+    }
+
+    /**
+     *
+     */
+    public void goToBooking(){
+        mDriver.get("https://www.booking.com/");
     }
 }

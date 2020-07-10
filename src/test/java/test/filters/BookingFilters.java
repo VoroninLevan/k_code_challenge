@@ -1,23 +1,25 @@
-package filters;
+package test.filters;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
+import page.main.BookingMainPage;
 import page.main.BookingMainStaysPage;
 import page.search.BookingSearchResultsPage;
+import test.BaseTest;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class BookingFilters {
+public class BookingFilters extends BaseTest {
+
+    public BookingFilters() {
+        super();
+    }
 
     @Test
     public void test(){
-        System.setProperty("webdriver.gecko.driver",
-                "src\\test\\resources\\drivers\\geckodriver.exe");
-        WebDriver driver = new FirefoxDriver();
-        driver.get("https://www.booking.com/");
-        BookingMainStaysPage mainStays = new BookingMainStaysPage(driver);
+        BookingMainPage main = new BookingMainPage(mDriver);
+        main.goToBooking();
+        BookingMainStaysPage mainStays = new BookingMainStaysPage(mDriver);
         mainStays.declineCookieWarning();
         mainStays.setLocation("Limerick");
         mainStays.openCloseCalendar();
@@ -29,7 +31,7 @@ public class BookingFilters {
         BookingSearchResultsPage searchResults = mainStays.search();
         searchResults.selectStarRating(4);
         searchResults.selectSauna();
-        driver.quit();
+        //driver.quit();
     }
 
     /**
