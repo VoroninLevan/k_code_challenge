@@ -21,16 +21,15 @@ public class Driver {
         mIsFullscreen = parameterReader.getFullscreen();
         mWidth = parameterReader.getWidth();
         mHeight = parameterReader.getHeight();
-        setupBrowser();
     }
 
     /**
-     * Sets up browser depends on the parameters provided in 'parameters.xml'
+     * Sets up and starts browser depends on the parameters provided in 'parameters.xml'
      * NOTE: Currently supports 2 browsers: Firefox and Chrome
      * If 'fullscreen' value is false -> will set width and height of window depends on respective
      * values from 'parameters.xml'
      */
-    private void setupBrowser(){
+    protected void startBrowser(){
         switch (mProfile){
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", GECKO_DRIVER);
@@ -64,6 +63,7 @@ public class Driver {
      * @return WebDriver -> WebDriver object
      */
     public WebDriver getDriver(){
+        startBrowser();
         return mDriver;
     }
 }
