@@ -4,7 +4,7 @@ public class ParameterReader {
 
     private String mProfile;
 
-    protected ParameterReader(){
+    protected ParameterReader() {
 
     }
 
