@@ -13,10 +13,17 @@ public class BookingSearchResultsPage extends BasePage {
         super(driver);
     }
 
+    /**
+     *
+     * @param stars
+     */
     public void selectStarRating(int stars){
         clickByXPath("//a[@data-id='class-" + stars + "']");
     }
 
+    /**
+     *
+     */
     public void selectSauna(){
         List<WebElement> popActivities = findElements(BasePage.XPATH,
                 "//a[contains(@data-id, 'popular_activities')]");
