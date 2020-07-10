@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Filters">
+   <!--<parameter name="propertiesFile" value="src/test/resources/config/parameters/parameters.xml"/>-->
+   <test name="stars">
+      <classes>
+         <class name="filters.BookingFilters"/>
+      </classes>
+   </test>
+   <!--<test name="spa">
+      <classes>
+         <class name="filters.BookingFilters" />
+      </classes>
+   </test>-->
+</suite>  
