@@ -41,19 +41,22 @@ public class BookingSearchResultsPage extends BasePage {
      */
     public void triggerStarRating(int stars){
         clickByXPath("//a[@data-id='class-" + stars + "']");
+        waitForVisibilityOfElementByXpath("//div[@class='sr-usp-overlay sr-usp-overlay--wide']");
         waitForInvisibilityOfElementByXpath("//div[@class='sr-usp-overlay sr-usp-overlay--wide']");
     }
 
     /**
-     * Triggers 'Sauna' filter
+     * Triggers desired recent filter off
+     *
+     * @param option String -> filter option name
      */
-    public void triggerSauna(){
-        List<WebElement> popActivities = findElements(BasePage.XPATH,
-                "//a[contains(@data-id, 'popular_activities')]");
-        for (WebElement currentActivity : popActivities){
-            String activity = currentActivity.findElement
+    public void triggerRecentFilterOff(String option){
+        List<WebElement> recentList = findElements(BasePage.XPATH,
+                "//div[@id='filter_recent']//a");
+        for (WebElement currentFilter : recentList){
+            String filterName = currentFilter.findElement
                     (By.xpath(".//span[contains(@class, 'filter_label')]")).getText();
-            if (activity.contains("Sauna")) currentActivity.click();
+            if (filterName.contains("Sauna")) currentFilter.findElement(By.xpath(".//label")).click();
         }
         waitForInvisibilityOfElementByXpath("//div[@class='sr-usp-overlay sr-usp-overlay--wide']");
     }

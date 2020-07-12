@@ -57,7 +57,7 @@ public class BookingFilters extends BaseTest {
                 "Expected behavior failed. '" + hotelWithoutSauna +
                         "' does not have sauna facilities but did appear in the search results.");
         // Trigger 'Sauna' filter off -> test switch off functionality
-        searchResults.triggerSauna();
+        searchResults.triggerRecentFilterOff(filterOption);
         Assert.assertTrue(searchResults.isHotelPresent(hotelWithoutSauna),
                 "Expected behavior failed. 'Sauna' filter was switched off - '" + hotelWithSauna +
                         "' which has no sauna facilities did not appear in the search results.");
