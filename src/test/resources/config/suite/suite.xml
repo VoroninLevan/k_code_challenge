@@ -1,15 +1,22 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Filters">
-   <!--<parameter name="propertiesFile" value="src/test/resources/config/parameters/parameters.xml"/>-->
-   <test name="stars">
+<suite name="Filters" thread-count="1" parallel="false">
+   <test name="sauna_filter">
       <classes>
-         <class name="test.filters.BookingFilters"/>
+         <class name="test.filters.BookingFilters" >
+            <methods>
+               <include name="testSaunaFilterOptionFunctionality"/>
+            </methods>
+         </class>
       </classes>
    </test>
-   <!--<test name="spa">
+   <test name="stars_filter">
       <classes>
-         <class name="test.filters.BookingFilters" />
+         <class name="test.filters.BookingFilters">
+            <methods>
+               <include name="testStarFilterOptionFunctionality"/>
+            </methods>
+         </class>
       </classes>
-   </test>-->
+   </test>
 </suite>  
