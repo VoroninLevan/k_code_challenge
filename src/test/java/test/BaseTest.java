@@ -1,8 +1,8 @@
 package test;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import provider.Driver;
 import provider.ParameterReader;
 
@@ -13,15 +13,15 @@ public class BaseTest {
     public BaseTest(){
     }
 
-    @BeforeSuite
-    protected void beforeSuite(){
+    @BeforeMethod
+    protected void beforeMethod(){
         ParameterReader reader = new ParameterReader();
         Driver driver = new Driver(reader);
         mDriver = driver.getDriver();
     }
 
-    @AfterSuite
-    protected void afterSuite(){
+    @AfterMethod
+    protected void afterMethod(){
         mDriver.close();
     }
 }

@@ -28,6 +28,81 @@ public class BasePage {
     }
 
     /**
+     * Clears text field
+     *
+     * @param by int -> identifier:
+     *           1 - xPath,
+     *           2 - Id,
+     *           3 - Class name
+     * @param identifier String -> Element unique identifier
+     */
+    protected void clearTextField(int by, String identifier){
+        WebElement element = findElement(by, identifier);
+        if (element != null) {
+            element.clear();
+        }
+    }
+
+    /**
+     * Clicks element by xPath
+     *
+     * @param xPath String -> Element xPath
+     */
+    protected void clickByXPath(String xPath){
+        try {
+            mWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath))).click();
+            logger.log(Level.INFO, "Clicked element with xPath: " + xPath);
+        } catch (NoSuchElementException e){
+            logger.log(Level.WARNING, "Element not found by xPath: " + xPath);
+        }
+    }
+
+    /**
+     * Clicks element by id
+     *
+     * @param id String -> Element id attribute
+     */
+    protected void clickById(String id){
+        try {
+            mWait.until(ExpectedConditions.elementToBeClickable(By.id(id))).click();
+            logger.log(Level.INFO, "Clicked element with id: " + id);
+        } catch (NoSuchElementException e){
+            logger.log(Level.WARNING, "Element not found by id: " + id);
+        }
+    }
+
+    /**
+     * Clicks element by class name
+     *
+     * @param className String -> Element class attribute
+     */
+    protected void clickByClassName(String className){
+        try {
+            mWait.until(ExpectedConditions.elementToBeClickable(By.className(className))).click();
+            logger.log(Level.INFO, "Clicked element with class name: " + className);
+        } catch (NoSuchElementException e){
+            logger.log(Level.WARNING, "Element not found by class name: " + className);
+        }
+    }
+
+    /**
+     * Sets text into text field
+     *
+     * @param by int -> identifier:
+     *           1 - xPath,
+     *           2 - Id,
+     *           3 - Class name
+     * @param identifier String -> Element unique identifier
+     * @param text String -> desired string
+     */
+    protected void enterText(int by, String identifier, String text){
+        WebElement element = findElement(by, identifier);
+        if (element != null) {
+            element.sendKeys(text);
+        }
+    }
+
+    /**
      * Finds and returns list of web elements
      *
      * @param by int -> identifier:
@@ -37,7 +112,7 @@ public class BasePage {
      * @param identifier String -> Element unique identifier
      * @return List -> list of web elements
      */
-    public List<WebElement> findElements(int by, String identifier){
+    protected List<WebElement> findElements(int by, String identifier){
         switch (by){
             case XPATH:
                 try {
@@ -72,52 +147,10 @@ public class BasePage {
      * @param identifier String -> Element unique identifier
      * @return String -> text
      */
-    public String getElementText(int by, String identifier){
+    protected String getElementText(int by, String identifier){
         WebElement element = findElement(by, identifier);
         if (element != null) return element.getText();
         return null;
-    }
-
-    /**
-     * Clicks element by xPath
-     *
-     * @param xPath String -> Element xPath
-     */
-    public void clickByXPath(String xPath){
-        try {
-            mWait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath))).click();
-            logger.log(Level.INFO, "Clicked element with xPath: " + xPath);
-        } catch (NoSuchElementException e){
-            logger.log(Level.WARNING, "Element not found by xPath: " + xPath);
-        }
-    }
-
-    /**
-     * Clicks element by id
-     *
-     * @param id String -> Element id attribute
-     */
-    public void clickById(String id){
-        try {
-            mWait.until(ExpectedConditions.elementToBeClickable(By.id(id))).click();
-            logger.log(Level.INFO, "Clicked element with id: " + id);
-        } catch (NoSuchElementException e){
-            logger.log(Level.WARNING, "Element not found by id: " + id);
-        }
-    }
-
-    /**
-     * Clicks element by class name
-     *
-     * @param className String -> Element class attribute
-     */
-    public void clickByClassName(String className){
-        try {
-            mWait.until(ExpectedConditions.elementToBeClickable(By.className(className))).click();
-            logger.log(Level.INFO, "Clicked element with class name: " + className);
-        } catch (NoSuchElementException e){
-            logger.log(Level.WARNING, "Element not found by class name: " + className);
-        }
     }
 
     /**
@@ -130,7 +163,7 @@ public class BasePage {
      * @param identifier String -> Element unique identifier
      * @return boolean
      */
-    public boolean isElementPresent(int by, String identifier){
+    protected boolean isElementPresent(int by, String identifier){
         switch (by){
             case XPATH:
                 try {
@@ -168,29 +201,30 @@ public class BasePage {
      * @param identifier String -> Element unique identifier
      * @param text String -> desired option
      */
-    public void selectByText(int by, String identifier, String text){
+    protected void selectByText(int by, String identifier, String text){
         WebElement element = findElement(by, identifier);
         if (element != null) {
             Select select = new Select(element);
-            select.deselectByValue(text);
+            select.selectByValue(text);
         }
     }
 
     /**
-     * Sets text into text field
+     * Waits until element be visible by provided xPath
      *
-     * @param by int -> identifier:
-     *           1 - xPath,
-     *           2 - Id,
-     *           3 - Class name
-     * @param identifier String -> Element unique identifier
-     * @param text String -> desired string
+     * @param identifier String -> element xPath
      */
-    public void setText(int by, String identifier, String text){
-        WebElement element = findElement(by, identifier);
-        if (element != null) {
-            element.sendKeys(text);
-        }
+    public void waitForVisibilityOfElementByXpath(String identifier){
+        mWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(identifier)));
+    }
+
+    /**
+     * Waits until element be invisible by provided xPath
+     *
+     * @param identifier String -> element xPath
+     */
+    public void waitForInvisibilityOfElementByXpath(String identifier){
+        mWait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(identifier)));
     }
 
     /**
