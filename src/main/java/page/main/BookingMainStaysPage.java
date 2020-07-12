@@ -87,7 +87,7 @@ public class BookingMainStaysPage extends BookingMainPage{
      * @param location String -> Location
      */
     public void setLocation(String location){
-        setText(BookingMainStaysPage.XPATH,
+        enterText(BookingMainStaysPage.XPATH,
                 "//input[@data-component='search/destination/input-placeholder']",
                 location);
     }
