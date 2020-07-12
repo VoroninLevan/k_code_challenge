@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
  *     <li>testSaunaFilterOptionFunctionality()</li>
  *     <li>testStarFilterOptionFunctionality()</li>
  * </ul>
- * <p>Runnable from suite.xml. Reporting switched on.</p>
+ * <p>Runnable from suite.xml.</p>
  */
 public class BookingFilters extends BaseTest {
 
