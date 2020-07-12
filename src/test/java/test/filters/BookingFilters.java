@@ -11,6 +11,16 @@ import test.BaseTest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * <h1>booking.com filter test suite</h1>
+ * <p>This suite contains two test methods in order to test 'Star' and 'Sauna' filters functionality</p>
+ * <h4>Tests:</h4>
+ * <ul>
+ *     <li>testSaunaFilterOptionFunctionality()</li>
+ *     <li>testStarFilterOptionFunctionality()</li>
+ * </ul>
+ * <p>Runnable from suite.xml. Reporting switched on.</p>
+ */
 public class BookingFilters extends BaseTest {
 
     public BookingFilters() {
@@ -18,7 +28,20 @@ public class BookingFilters extends BaseTest {
     }
 
     /**
-     *
+     * <h1>'Sauna' filter option test</h1>
+     * <p>Name: <code>testSaunaFilterOptionFunctionality()</code><br>Tests 'Sauna' filter option functionality.
+     * The following cases considered:</p>
+     * <ul>
+     *     <li>Filter switched on -> only properties with 'Sauna' should appear in the search result</li>
+     *     <li>Filter checkbox checked when filter switched on</li>
+     *     <li>Filter switched off -> properties without 'Sauna' should appear in the search result</li>
+     * </ul>
+     * <h4>Test data:</h4>
+     * <ul>
+     *     <li>'Sauna' as filter option</li>
+     *     <li>'Limerick Strand Hotel' as property with sauna</li>
+     *     <li>'George Limerick Hotel' as property without sauna</li>
+     * </ul>
      */
     @Test (priority = 1)
     public void testSaunaFilterOptionFunctionality(){
@@ -64,7 +87,19 @@ public class BookingFilters extends BaseTest {
     }
 
     /**
-     *
+     * <h1>'Star' filter option test</h1>
+     * <p>Name: <code>testStarFilterOptionFunctionality()</code><br>Tests 'Star' filter option functionality.
+     * Stars might vary 1-5. The following cases considered:</p>
+     * <ul>
+     *     <li>Filter switched on -> only properties with 'N Star' should appear in the search result</li>
+     *     <li>Filter switched off -> all properties should appear in the search result</li>
+     * </ul>
+     * <h4>Test data:</h4>
+     * <ul>
+     *     <li>'5' as star rating</li>
+     *     <li>'The Savoy Hotel' as property with star rating '5'</li>
+     *     <li>'George Limerick Hotel' as property with non star rating '5'</li>
+     * </ul>
      */
     @Test (priority = 2)
     public void testStarFilterOptionFunctionality(){
